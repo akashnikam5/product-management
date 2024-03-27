@@ -1,0 +1,74 @@
+
+<div class="container-fluid justify-content-center align-items-center bg-animation d-flex">
+  <div class="row justify-content-center">
+    <div class="col-lg-12 col-md-8 col-sm-10"> 
+      <h2 class="card-title text-center my-4">Add Product</h2>
+      <div class="card mt-3">
+        <div class="card-body p-4">
+          <form [formGroup]="productForm" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
+            <div class="row mb-3">
+              <div class="col-md-6">
+                <label for="productName" class="form-label">Product Name:</label>
+                <input
+                  type="text"
+                  id="productName"
+                  name="productName"
+                  formControlName="name"
+                  required
+                  class="form-control"
+                />
+              </div>
+              <div class="col-md-6">
+                <label for="productPrice" class="form-label">Product Price:</label>
+                <input
+                  type="number"
+                  id="productPrice"
+                  name="productPrice"
+                  formControlName="price"
+                  required
+                  class="form-control"
+                />
+              </div>
+            </div>
+            <div class="row mb-3">
+              <div class="col-md-12">
+                <label for="productDescription" class="form-label">Product Description:</label>
+                <textarea
+                  id="productDescription"
+                  name="productDescription"
+                  formControlName="description"
+                  required
+                  class="form-control"
+                  rows="3"
+                ></textarea>
+              </div>
+            </div>
+            <div class="row mb-3">
+              <div class="col-md-8">
+                <label for="productImage" class="form-label">Product Image:</label>
+                <input
+                  type="file"
+                  id="productImage"
+                  name="productImage"
+                  (change)="onFileSelected($event)"
+                  accept="image/*"
+                  required
+                  class="form-control"
+                />
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="text-center"> 
+                  <button type="button" class="btn btn-secondary mx-3" routerLink="/products">Back</button>
+                  <button type="submit" class="btn btn-primary mx-3">{{ isEditMode ? "Update" : "Add" }} Product</button>
+                  <button type="button" class="btn btn-danger mx-3" (click)="resetForm()">Reset</button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
